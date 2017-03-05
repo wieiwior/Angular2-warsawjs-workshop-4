@@ -1,0 +1,12 @@
+
+<br>
+<h2 class="col-sm-6"> {{ categorySelected }} </h2>
+<div class="col-sm-6 text-right">
+    <span class="btn btn-xs btn-default" (click)="sort('asc')">Sortuj wg.nazwy rosnąco </span>
+    <span class="btn btn-xs btn-default" (click)="sort('desc')">Sortuj wg.nazwy malejąco </span>
+</div>
+<div class="col-sm-12" style="max-height: 600px; overflow: auto">
+    <app-video-item *ngFor="let video of videos" [video]="video"></app-video-item>
+</div>
+
+

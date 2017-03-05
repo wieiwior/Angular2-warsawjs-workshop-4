@@ -1,0 +1,54 @@
+<div class="jumbotron" style="margin-top: 40px; height: 100vh;">
+  <h1>My VOD</h1>
+  <p>Dodaj nowy film</p>
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-10">
+
+      <form class="row" id="addNewVideo" (submit)="addNewVideo($event.target)">
+
+        <div class="form-group col-sm-12 notNullable">
+          <label for="name">Tytuł</label>
+          <input type="text" class="form-control" name="title" placeholder="Tytuł" required>
+        </div>
+
+        <div class="form-group col-sm-12 notNullable">
+          <label for="name">Opis</label>
+          <input type="text" class="form-control" name="description" placeholder="Opis" required>
+        </div>
+        
+        <div class="form-group col-sm-12 notNullable">
+           <label for="name">Kategoria</label>
+           <select name="categoryId" class="form-control">
+                <option *ngFor="let cat of categories" [value]="cat.id" [selected]="category == cat.id">{{cat.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group col-sm-12 notNullable">
+          <label for="name">Czy jest darmowy</label>
+          <input type="checkbox" class="form-control" name="is_free" placeholder="Czy jest darmowy">
+        </div>
+         <div class="form-group col-sm-12 notNullable">
+          <label for="hash">Hash filmu</label>
+          <input type="text" class="form-control" name="hash" placeholder="Hash filmu" required>
+        </div>
+        
+        <div class="form-group col-sm-12 notNullable">
+          <label for="name">Popularność</label>
+          <input type="text" class="form-control" name="populary" placeholder="Popularność" required>
+        </div>
+
+        <div class="form-group col-sm-12 notNullable">
+          <label for="name">Link do obrazu</label>
+          <input type="text" class="form-control" name="img" placeholder="Link do obrazu" required>
+        </div>
+
+        <div class="form-group col-sm-12">
+          <input type="submit" class="btn btn-sm btn-default" value="Dodaj" />
+        </div>
+
+        <div class="message col-sm-12 text-center" style="margin-top: 10px;"> {{ message }} </div>
+
+      </form>
+    </div>
+  </div>
+</div>

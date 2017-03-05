@@ -1,0 +1,23 @@
+<div class="jumbotron" style="margin-top: 40px; padding-bottom: 360px">
+  <h1>My VOD</h1>
+  <p>Wybierz kategorie lub wyszukaj</p>
+  <div class="col-sm-6 col-sm-offset-3">
+    <ul class="list-group">
+      <li class="list-group-item" style="background: #87CEFA; height: 70px">
+        <form class="navbar-form navbar-left" (submit)="search()">
+          <div class="form-group">
+            <input list="videos" class="form-control" [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder="Szukaj...">
+            <datalist id="videos">
+              <option *ngFor="let video of videos" value="{{video.title}}">
+            </datalist>
+          </div>
+          <button type="submit" class="btn btn-default"> <i class="fa fa-search"></i> Szukaj</button>
+        </form>
+      </li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item" style="background: #87CEFA">Kategorie</li>
+      <li *ngFor="let cat of categories" class="list-group-item" (click)="goCategory(cat.name)"><a [routerLink]="['filmy', cat.name, '']"> {{ cat.name }} </a></li>
+    </ul>
+  </div>
+</div>

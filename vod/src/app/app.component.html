@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['start']"> <i class="fa fa-certificate" aria-hidden="true"></i> <span>My VOD </span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['start']">Start</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategorie <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li *ngFor="let cat of categories" style="cursor: default"><a [routerLink]="['filmy', cat.name, query]"> {{ cat.name }} </a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['dodajVideo']">Dodaj Video</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" (submit)="search()">
+        <div class="form-group">
+          <input list="videos" class="form-control" [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder="Szukaj...">
+          <datalist id="videos">
+            <option *ngFor="let video of videos" value="{{video.title}}">
+          </datalist>
+        </div>
+        <button type="submit" class="btn btn-default"> <i class="fa fa-search"></i> Szukaj</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!user"><a [routerLink]="['zaloguj']">Zaloguj</a></li>
+        <li *ngIf="!user"><a [routerLink]="['zarejestruj']">Zarejestruj</a></li>
+        <li *ngIf="user" (click)="logout()" style="cursor: default"><a> {{ user }} - Wyloguj </a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div> 
+<footer class="footer" >
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav pull-right">
+        <li><a>© 2017 My VOD, Inc.</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</footer>

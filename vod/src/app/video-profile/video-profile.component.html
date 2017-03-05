@@ -1,0 +1,18 @@
+<br>
+<div>
+  <div class="col-sm-4" style="padding: 10px; border: 1px solid #eee; border-radius: 5px; text-align: center">
+    <img [src]="video.img" />
+  </div>
+
+  <h2 class="col-sm-7 col-sm-offset-1"> Film: {{ video.title }} </h2>
+
+  <div class="col-sm-7 col-sm-offset-1" style="padding: 10px; border: 1px solid #eee; border-radius: 5px;">
+    <h2>Opis:</h2> {{ video.description }}
+  </div>
+  <div class="col-sm-12 text-center" style="top: 10px; padding: 10px; border: 1px solid #eee; border-radius: 5px;">
+    <iframe *ngIf="access" id="ytplayer" type="text/html" [src]="yturl | save" style="width: 100%; height: 75vh;" frameborder="0" allowfullscreen></iframe>
+    <p *ngIf="!access" style="padding: 10px; padding-top: 20px;">
+      <b>Zaloguj się celu dostępu do materiałów wideo płatnych...</b>
+    </p>
+  </div>
+</div>
